@@ -1,0 +1,69 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <br>
+  <br>
+  <br>
+    <div class='card'>
+      <div class='card-header'>
+        {{pageTitle}}
+        <div class="form-group mx-sm-3 mb-2">
+          <button style="float: right;" class="btn btn-outline-secondary" style="float: right" (click)="OnNew()">
+            New
+          </button>
+       
+   
+        </div>
+      </div>
+      <div class='card-body'>
+    
+  
+  
+     <br>
+  
+        <div class='table-responsive'>
+          <table class='table' *ngIf='List.length'>
+            <thead>
+              <tr>
+    
+                <th>Tickets Number</th>
+         
+    
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let item of List'>
+    
+                <td> {{item|titlecase}} </td>
+           
+               
+    
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+  
+     
+       
+        </div>
+  
+      
+      <div class="card-footer">
+  
+      
+        <div class="form-group mx-sm-3 mb-2">
+          <button style="float: right;" class="btn btn-outline-secondary" style="float: right" (click)="OnNew()">
+            New
+          </button>
+       
+   
+        </div>
+  
+      </div>
+  
+    </div>
+  </div>
+
+  
+  
+  
