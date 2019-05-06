@@ -3,6 +3,7 @@ import * as io from 'socket.io-client';
 import { Observable } from 'rxjs';
 import { Observer } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +24,8 @@ export class MessageQueueService {
   /**
    * Creates an instance of message queue service.
    */
-  constructor() {
+ 
+  constructor(private http: HttpClient) {
     try {
       this.socket = io(this.url);
     }
@@ -35,11 +37,17 @@ export class MessageQueueService {
 
 
 
+
+  
+NewTicket():Observable<string[]>{
+  return this.http.get<string[]>("http://localhost:3000/newTickets");
+}
+
   /**
    * Gets q
    * @returns q 
    */
-  getQ(): Observable<string[]> {
+  getUpdate(): Observable<string[]> {
 
     try {
       this.socket.on('UpadteList', (res) => {

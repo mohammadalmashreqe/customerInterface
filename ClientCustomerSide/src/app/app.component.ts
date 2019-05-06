@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
    * @param service 
    */
   constructor(private service: MessageQueueService) {
+   
 
   }
 
@@ -38,9 +39,9 @@ export class AppComponent implements OnInit {
    */
   ngOnInit(): void {
     try {
-      this.subscription = this.service.getQ()
-        .subscribe(List => {
-          this.List = List;
+      this.subscription = this.service.getUpdate()
+      .subscribe(List => {
+        this.List = List;
         });
     }
     catch (err) {
@@ -59,7 +60,11 @@ export class AppComponent implements OnInit {
 
   OnNew(): void {
     try {
-      this.service.NewTickets();
+      this.subscription = this.service.NewTicket()
+      .subscribe(List => {
+        this.List = List;
+      });
+    
     }
     catch (err) {
       console.log(err);
