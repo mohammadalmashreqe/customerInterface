@@ -13,6 +13,7 @@ export class MessageQueueService {
    * Url  of message queue service
    */
   private url = 'http://localhost:3000';
+  
   List: string[];
   /**
    * Socket  of message queue service
@@ -52,6 +53,8 @@ NewTicket():Observable<string[]>{
 
     try {
       this.socket.on('onListUpdate', (res) => {
+      console.log("list up to dateeee y ahooooo");
+      console.l
         this.observer.next(res);
       });
 
@@ -82,21 +85,7 @@ NewTicket():Observable<string[]>{
 
 
 
-  /**
-   * News tickets 
-   */
-  NewTickets(): void {
-    try {
-
-      this.socket.emit('new-Tickets');
-    }
-
-
-    catch (err) {
-      console.log(err);
-
-    }
-  }
+  
 
 
 }

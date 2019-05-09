@@ -42,14 +42,16 @@ export class AppComponent implements OnInit {
       this.subscription = this.service.getUpdate()
         .subscribe(List => {
           this.List = List;
+          
+  console.log("w lqad atyte w alrma7  ^^");
+  console.log("res = "+List.toString());
+
         });
     }
     catch (err) {
       console.log(err);
     }
   }
-
-
 
 
 
@@ -65,10 +67,7 @@ export class AppComponent implements OnInit {
           this.List = List;
         });
 
-      this.subscription = this.service.getUpdate()
-        .subscribe(List => {
-          this.List = List;
-        });
+      
 
 
 
