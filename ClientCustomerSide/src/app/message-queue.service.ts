@@ -54,7 +54,7 @@ NewTicket():Observable<string[]>{
     try {
       this.socket.on('onListUpdate', (res) => {
       console.log("list up to dateeee y ahooooo");
-      console.l
+      console.log("Res : "+res);
         this.observer.next(res);
       });
 
