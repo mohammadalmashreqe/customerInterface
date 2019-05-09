@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Observer } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -50,7 +51,7 @@ NewTicket():Observable<string[]>{
   getUpdate(): Observable<string[]> {
 
     try {
-      this.socket.on('UpadteList', (res) => {
+      this.socket.on('onListUpdate', (res) => {
         this.observer.next(res);
       });
 
