@@ -19,11 +19,17 @@ export class AppComponent implements OnInit {
   List: string[];
 
   /**
-   * Subscription  of app component
+   * SubscriptionforList  of app component
    */
-  subscription: Subscription;
+  subscriptionForList: Subscription;
+
+  /**
+   * SubscriptionforList  of app component
+   */
+  subscriptionforResult: Subscription;
 
 
+  ResultOFCallAPI:any;
 
   /**
 * Creates an instance of app component.
@@ -39,11 +45,10 @@ export class AppComponent implements OnInit {
    */
   ngOnInit(): void {
     try {
-      this.subscription = this.service.getUpdate()
+      this.subscriptionForList = this.service.getUpdate()
         .subscribe(List => {
           this.List = List;
           
-  console.log("w lqad atyte w alrma7  ^^");
   console.log("res = "+List.toString());
 
         });
@@ -62,9 +67,9 @@ export class AppComponent implements OnInit {
 
   OnNew(): void {
     try {
-      this.subscription = this.service.NewTicket()
-        .subscribe(List => {
-          this.List = List;
+      this.subscriptionforResult = this.service.NewTicket()
+        .subscribe(result => {
+          this.ResultOFCallAPI = result;
         });
 
       
@@ -83,7 +88,8 @@ export class AppComponent implements OnInit {
 
   ngOnDestroy() {
     try {
-      this.subscription.unsubscribe();
+      this.subscriptionForList.unsubscribe();
+      this.subscriptionforResult.unsubscribe();
     }
     catch (err) {
       console.log(err);

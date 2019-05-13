@@ -12,7 +12,7 @@ export class MessageQueueService {
 /**
    * Url  of message queue service
    */
-  private url = 'http://localhost:3000';
+  private url = 'http://localhost:4000';
   
   List: string[];
   /**
@@ -42,7 +42,7 @@ export class MessageQueueService {
 
   
 NewTicket():Observable<string[]>{
-  return this.http.get<string[]>("http://localhost:3000/newTickets");
+  return this.http.get<string[]>("http://localhost:4000/newTickets");
 }
 
   /**
@@ -52,10 +52,10 @@ NewTicket():Observable<string[]>{
   getUpdate(): Observable<string[]> {
 
     try {
-      this.socket.on('onListUpdate', (res) => {
-      console.log("list up to dateeee y ahooooo");
-      console.log("Res : "+res);
-        this.observer.next(res);
+      this.socket.on('UpadteList', (List) => {
+      
+      console.log("List is  : "+JSON.parse(List));
+        this.observer.next(JSON.parse(List));
       });
 
       return this.createObservable();
